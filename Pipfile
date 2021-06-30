@@ -13,6 +13,7 @@ django-rest-authtoken = "*"
 django-rest-auth = "*"
 django-allauth = "*"
 gunicorn = "*"
+djongo = "*"
 
 [dev-packages]
 
