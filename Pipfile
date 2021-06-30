@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-heroku = "*"
+django = "*"
+djangorestframework = "*"
+mango-jwt = "*"
+django-cors-headers = "*"
+django-rest-authtoken = "*"
+django-rest-auth = "*"
+django-allauth = "*"
+gunicorn = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
