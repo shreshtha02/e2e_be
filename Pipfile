@@ -7,13 +7,15 @@ name = "pypi"
 django-heroku = "*"
 django = "*"
 djangorestframework = "*"
-mango-jwt = "*"
 django-cors-headers = "*"
 django-rest-authtoken = "*"
 django-rest-auth = "*"
 django-allauth = "*"
 gunicorn = "*"
 djongo = "*"
+mango-jwt = "*"
+pyjwt = "~=2.0.0"
+djangorestframework-simplejwt = "~=4.6.0"
 
 [dev-packages]
 

@@ -13,7 +13,6 @@ from mongo_auth.permissions import AuthenticatedOnly
 import json
 from bson import ObjectId
 from django.contrib.auth import authenticate, login,logout
-from rest_framework import status
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
