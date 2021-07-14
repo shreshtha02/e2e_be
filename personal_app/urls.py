@@ -7,7 +7,7 @@ from personal_app.views import MyView,ReactView
 urlpatterns = [
     # url('login/', MyView.as_view(), name='login'),
     url('login/', views.login, name="login"),
-    url('signup/', views.login, name="signup"),
+    url('signup/', views.signup, name="signup"),
     url('wel/', ReactView.as_view(), name="something"),
     # url('mongo_auth/', include('mongo_auth.urls')),
     # url('mongo_auth/', ReactView.as_view(), name="something"),
