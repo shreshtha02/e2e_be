@@ -80,8 +80,10 @@ def login(request):
             data = request.data if request.data is not None else {}
             username = data['username']
             password = data['password']
+            type = data['type']
             if "@" in username:
                 user = database[auth_collection].find_one({"email": username}, {"_id": 0})
+                print(user['type'])
             else:
                 if secondary_username_field:
                     user = database[auth_collection].find_one({secondary_username_field: username}, {"_id": 0})
@@ -109,6 +111,34 @@ def login(request):
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                             data={"data": {"error_msg": str(e)}})
 
+
+###jean countdown
+@api_view(["POST"])
+def get_countdown(request):
+        print('get_countdown')
+        try:
+            data = request.data if request.data is not None else {}
+
+            start = datetime.strptime('12-01-2021', '%m-%d-%Y')
+            end = datetime.strptime(data['date'], '%m-%d-%Y')
+            
+            collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end)
+                
+            print('collection',collection)
+
+            if collection is not None:
+                return Response(status=status.HTTP_200_OK,
+                                    data={"data": collection})
+            else:
+                return Response(status=status.HTTP_403_FORBIDDEN,
+                                    data={"error_msg": messages.incorrect_password})
+
+        except ValidationError as v_error:
+            return Response(status=status.HTTP_400_BAD_REQUEST,
+                            data={'success': False, 'message': str(v_error)})
+        except Exception as e:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                            data={"data": {"error_msg": str(e)}})
 
 
 # Create your views here.

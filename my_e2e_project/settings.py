@@ -61,14 +61,28 @@ MANGO_JWT_SETTINGS = {
     "db_pass": "12345"
 }
 
+# # Or use Advanced Settings (including optional settings)
+# MANGO_JWT_SETTINGS = {
+#     "db_host": "cluster0.3hdcb.mongodb.net",
+#     "db_name": "e2e_db",
+#     "db_user": "test",
+#     "db_pass": "12345",
+#     "auth_collection": "user_profile", #"personal_users", # default is "user_profile"
+#     "fields": ("email", "password","firstname","lastname","phone","type","country","region"), # default
+#     "jwt_secret": "secret", # default
+#     "jwt_life": 7, # default (in days)
+#     # "secondary_username_field": "mobile" # default is None
+# }
+
+###for jean####
 # Or use Advanced Settings (including optional settings)
 MANGO_JWT_SETTINGS = {
     "db_host": "cluster0.3hdcb.mongodb.net",
     "db_name": "e2e_db",
     "db_user": "test",
     "db_pass": "12345",
-    "auth_collection": "personal_users", # default is "user_profile"
-    "fields": ("email", "password","firstname","lastname","phone"), # default
+    "auth_collection": "jean_countdown", #"personal_users", # default is "user_profile"
+    "fields": ("vimeo_id", "vimeo_link","created_at","text_msg","date"), # default
     "jwt_secret": "secret", # default
     "jwt_life": 7, # default (in days)
     # "secondary_username_field": "mobile" # default is None
@@ -86,6 +100,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
 ]
 
 # REST_AUTH_SERIALIZERS = {
