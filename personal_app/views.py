@@ -122,7 +122,7 @@ def get_countdown(request):
             start = datetime.strptime('12-01-2021', '%m-%d-%Y')
             end = datetime.strptime(data['date'], '%m-%d-%Y')
             
-            collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end)
+            collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end}})
                 
             print('collection',collection)
 
