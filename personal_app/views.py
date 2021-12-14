@@ -113,24 +113,24 @@ def login(request):
 
 
 ###jean countdown
-@api_view(["POST"])
-def get_countdown(request):
+@api_view(["GET"])
+def get_countdown():
         print('get_countdown')
         try:
-            data = request.data if request.data is not None else {}
+            # data = request.data if request.data is not None else {}
 
-            start = datetime.datetime.strptime('12-01-2021', '%m-%d-%Y')
-            end = datetime.datetime.strptime(data['date'], '%m-%d-%Y')
+            # start = datetime.datetime.strptime('12-01-2021', '%m-%d-%Y')
+            # end = datetime.datetime.strptime(data['date'], '%m-%d-%Y')
             
-            collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end}})
-                
+            # collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end}})
+            collection = database[auth_collection]
             print('collection',collection)
 
             if (collection.count() >0):
                 return Response(status=status.HTTP_200_OK,
                                     data={"data": collection})
             else:
-                collection = [{"vimeo_id": "xyz","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "text msg 1","date": "12-01-2021"}]
+                collection = [{"vimeo_id": "xyz","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "text msg 1","date": "12-01-2021"},{"vimeo_id": "yhn","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "Text msg 2","date": "12-02-2021"}]
                 return Response(status=status.HTTP_200_OK,
                                     data={"data": collection})
 
