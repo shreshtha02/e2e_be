@@ -114,10 +114,10 @@ def login(request):
 
 ###jean countdown
 @api_view(["GET"])
-def get_countdown():
+def get_countdown(request):
         print('get_countdown')
         try:
-            # data = request.data if request.data is not None else {}
+            data = request.data if request.data is not None else {}
 
             # start = datetime.datetime.strptime('12-01-2021', '%m-%d-%Y')
             # end = datetime.datetime.strptime(data['date'], '%m-%d-%Y')
