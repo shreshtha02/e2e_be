@@ -12,6 +12,7 @@ from .utils import get_db_handle, get_collection_handle
 from mongo_auth.permissions import AuthenticatedOnly
 import json
 from bson import ObjectId
+from bson.json_util import dumps
 from django.contrib.auth import authenticate, login,logout
 from rest_framework.decorators import api_view
 from mongo_auth.utils import create_unique_object_id, pwd_context
@@ -124,12 +125,13 @@ def get_countdown(request):
             
             # collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end}})
             collection = database[auth_collection].find()
-            collection = json.dumps(collection)
-            print('collection',collection)
+            list_cur = list(collection)
+            json_data = dumps(list_cur)
+            print('collection',json_data)
 
-            if (collection.count() >0):
+            if (len(json_data) >0):
                 return Response(status=status.HTTP_200_OK,
-                                    data={"data": collection})
+                                    data={"data": json_data})
             else:
                 collection = [{"vimeo_id": "xyz","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "text msg 1","date": "12-01-2021"},{"vimeo_id": "yhn","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "Text msg 2","date": "12-02-2021"}]
                 return Response(status=status.HTTP_200_OK,
