@@ -130,7 +130,7 @@ def get_countdown(request):
                 return Response(status=status.HTTP_200_OK,
                                     data={"data": collection})
             else:
-                collection = [{vimeo_id: "xyz",vimeo_link: "https://vimeo.com/324168514",created_at: "2021-12-05",text_msg: "text msg 1",date: "12-01-2021"}]
+                collection = [{"vimeo_id": "xyz","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "text msg 1","date": "12-01-2021"}]
                 return Response(status=status.HTTP_200_OK,
                                     data={"data": collection})
 
