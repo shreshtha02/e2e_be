@@ -126,12 +126,13 @@ def get_countdown(request):
                 
             print('collection',collection)
 
-            if collection is not None:
+            if len(collection) >0:
                 return Response(status=status.HTTP_200_OK,
                                     data={"data": collection})
             else:
-                return Response(status=status.HTTP_403_FORBIDDEN,
-                                    data={"error_msg": messages.incorrect_password})
+                collection = [{vimeo_id: "xyz",vimeo_link: "https://vimeo.com/324168514",created_at: "2021-12-05",text_msg: "text msg 1",date: "12-01-2021"}]
+                return Response(status=status.HTTP_200_OK,
+                                    data={"data": collection})
 
         except ValidationError as v_error:
             return Response(status=status.HTTP_400_BAD_REQUEST,
