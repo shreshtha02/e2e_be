@@ -119,8 +119,8 @@ def get_countdown(request):
         try:
             data = request.data if request.data is not None else {}
 
-            start = datetime.strptime('12-01-2021', '%m-%d-%Y')
-            end = datetime.strptime(data['date'], '%m-%d-%Y')
+            start = datetime.datetime.strptime('12-01-2021', '%m-%d-%Y')
+            end = datetime.datetime.strptime(data['date'], '%m-%d-%Y')
             
             collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end}})
                 
