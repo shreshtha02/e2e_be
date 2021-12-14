@@ -126,7 +126,7 @@ def get_countdown(request):
                 
             print('collection',collection)
 
-            if len(collection) >0:
+            if (collection.count() >0):
                 return Response(status=status.HTTP_200_OK,
                                     data={"data": collection})
             else:
