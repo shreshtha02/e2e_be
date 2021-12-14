@@ -126,12 +126,13 @@ def get_countdown(request):
             # collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end}})
             collection = database[auth_collection].find()
             list_cur = list(collection)
-            # json_data = dumps(list_cur)
-            print('collection',list_cur)
+            json_data = dumps(list_cur)
+            json_data = json.loads(json_data)
+            print('collection',json_data)
 
-            if (len(list_cur) >0):
+            if (len(json_data) >0):
                 return Response(status=status.HTTP_200_OK,
-                                    data={"data": list_cur})
+                                    data={"data": json_data})
             else:
                 collection = [{"vimeo_id": "xyz","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "text msg 1","date": "12-01-2021"},{"vimeo_id": "yhn","vimeo_link": "https://vimeo.com/324168514","created_at": "2021-12-05","text_msg": "Text msg 2","date": "12-02-2021"}]
                 return Response(status=status.HTTP_200_OK,
