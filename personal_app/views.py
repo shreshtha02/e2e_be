@@ -124,6 +124,7 @@ def get_countdown(request):
             
             # collection = database[auth_collection].find({'date':{'$gte':start,'$lte':end}})
             collection = database[auth_collection].find()
+            collection = json.dumps(collection)
             print('collection',collection)
 
             if (collection.count() >0):
